@@ -20,12 +20,14 @@ type Server struct{
 	mux     chi.Router
 	server  *http.Server
 	log     *zap.Logger
+	opts    Options
 }
 
 type Options struct{
 	Host  string
 	Port  int
 	Log  *zap.Logger
+	PublicDir string
 }
 
 func New(opts Options) *Server{
@@ -42,6 +44,7 @@ func New(opts Options) *Server{
 		address: addr,
 		mux    : mux,
 		log    : opts.Log,
+		opts:   opts,
 		
 		server : &http.Server{
 			Addr: addr,

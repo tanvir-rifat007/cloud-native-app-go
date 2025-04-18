@@ -3,15 +3,25 @@ package integrationtest
 import (
 	"canvas/server"
 	"net/http"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 )
 
 
 func CreateServer() func(){
+	t:= &testing.T{}
+
+	tmp:= t.TempDir()
+
+  os.WriteFile(filepath.Join(tmp, "index.html"), []byte("<h1>Test</h1>"), 0644)
+
+
 	s:= server.New(server.Options{
 		Host: "localhost",
 		Port: 8081,
+		PublicDir: tmp,
 	})
 
 	// another goroutine to start the server
