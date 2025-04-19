@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:17.0
+    environment:
+      POSTGRES_DB: "${PG_DB}"
+      POSTGRES_USER: "${PG_USER}"
+      POSTGRES_PASSWORD: "${PG_PASSWORD}"
+    ports:
+      - 5432:5432
+    volumes:
+      - "./database/postgres-data:/var/lib/postgresql/data:rw"
+  postgres-test:
+    image: postgres:17.0
+    environment:
+      POSTGRES_DB: "${PG_DB_TEST}"
+      POSTGRES_USER: "${PG_USER_TEST}"
+      POSTGRES_PASSWORD: "${PG_PASSWORD_TEST}"
+    ports:
+      - 5433:5432
+volumes:
+  postgres:

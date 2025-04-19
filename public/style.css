@@ -1,6 +1,16 @@
-body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
+.loading-wave {
+  background: linear-gradient(90deg, #555 0%, #999 50%, #555 100%);
+  background-size: 200% 100%;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  animation: loading-wave 1.5s infinite ease-in-out;
+}
+
+@keyframes loading-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
